@@ -1,0 +1,30 @@
+resources:
+  jobs:
+    jb_pipeline_de_mini_project_Mar_26_2026_08_28_PM:
+      name: jb-pipeline-de-mini-project Mar 26, 2026, 08:28 PM
+      tasks:
+        - task_key: run_nb_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/bronze/nb_bronze
+            source: WORKSPACE
+        - task_key: run_nb_silver
+          depends_on:
+            - task_key: run_nb_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/silver/nb_silver
+            source: WORKSPACE
+        - task_key: run_nb_gold
+          depends_on:
+            - task_key: run_nb_silver
+          notebook_task:
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/gold/nb_gold
+            source: WORKSPACE
+        - task_key: run_nb_gold_kpi
+          depends_on:
+            - task_key: run_nb_gold
+          notebook_task:
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/gold/nb_gold_kpi
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
