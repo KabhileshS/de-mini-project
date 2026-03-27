@@ -5,25 +5,25 @@ resources:
       tasks:
         - task_key: run_nb_bronze
           notebook_task:
-            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/bronze/nb_bronze
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/01_bronze/nb_bronze
             source: WORKSPACE
         - task_key: run_nb_silver
           depends_on:
             - task_key: run_nb_bronze
           notebook_task:
-            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/silver/nb_silver
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/02_silver/nb_silver
             source: WORKSPACE
         - task_key: run_nb_gold
           depends_on:
             - task_key: run_nb_silver
           notebook_task:
-            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/gold/nb_gold
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/03_gold/nb_gold
             source: WORKSPACE
         - task_key: run_nb_gold_kpi
           depends_on:
             - task_key: run_nb_gold
           notebook_task:
-            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/gold/nb_gold_kpi
+            notebook_path: /Workspace/Users/kabhilesh14@gmail.com/de-mini-project/03_gold/nb_gold_kpi
             source: WORKSPACE
       queue:
         enabled: true
